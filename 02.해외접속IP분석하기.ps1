@@ -13,6 +13,7 @@ if ($rangeDays -match '^\d+$') {
     $days = [int]$rangeDays  # 정수로 변환
 } else {
     Write-Host "숫자를 입력해주세요."
+    Exit
 }
 $startDate = (Get-Date).AddDays(-$days)
 
