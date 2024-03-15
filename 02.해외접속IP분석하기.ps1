@@ -19,6 +19,9 @@ $startDate = (Get-Date).AddDays(-$days)
 # -All 옵션이 없을 경우, 최근 1000개만 수집됨, -All 사용시 최대 65535개, 날자+시간값에 대한 크기 비교를 위해서 문자열 형 변환 필요
 $RangedSignIn = Get-MgAuditLogSignIn -All -Filter "(createdDateTime ge $($startDate.ToString("yyyy-MM-ddTHH:mm:ssZ")))"
 
+# 접속 지역이 한국이 아닌 경우로 필터링하여, 새로이 정의한 변수에 저장.
+$filteredSignInLogs = @()  # 배열로 초기화
+
 foreach ($event in $RangedSignIn) {
   if ($event.Location.CountryOrRegion -ne "KR") {
     # KST로 변환하여 +9 시간 추가
