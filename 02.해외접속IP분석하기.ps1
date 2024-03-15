@@ -50,7 +50,7 @@ foreach ($event in $RangedSignIn) {
 $filename = "filtered_" + $startDate.ToString("yyyy-MM-dd-HH-mm-ss") + ".csv"
 
 ## 필터링된 로그인 로그 내용을, 1차 출력 파일로 출력함
-$filteredSignInLogs | Select-Object DateTime, CorrelationId, User, Email, App, Client, Interactive, IP, Location, ConditionalAccessStatus, LoginStatusCode, LoginStatusReason | Export-Csv -Path $filePath -Encoding UTF8 -NoTypeInformation
+$filteredSignInLogs | Select-Object DateTime, CorrelationId, User, Email, App, Client, Interactive, IP, Location, ConditionalAccessStatus, LoginStatusCode, LoginStatusReason | Export-Csv -Path $filename -Encoding UTF8 -NoTypeInformation
 
 # 정보 추출후 연결해제
 DisConnect-MgGraph
