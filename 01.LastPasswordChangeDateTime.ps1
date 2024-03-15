@@ -18,6 +18,6 @@ $currentStatus = Get-MgUser -All -Property usertype,DisplayName,Mail,LastPasswor
 $currentStatus = $currentStatus.lastPasswordChangeDateTime.AddHours(9)
 
 ## 현재 시각을 정보를 파일명에 반영함
-$filename = "lastPasswordChangeDate_" + (get-date -Format "yyyy-mm-dd_HH-mm-ss") + ".csv"
+$filename = "lastPasswordChangeDate_" + (get-date -Format "yyyy-MM-dd_HH-mm-ss") + ".csv"
 ## UTF-8 방식을 이용하여 한글 깨짐을 방지함.
 $currentStatus | Export-Csv -Path $filename -Encoding UTF8 -NoTypeInformation
